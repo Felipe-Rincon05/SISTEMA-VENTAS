@@ -1,0 +1,11 @@
+.formulario_mensaje {
+    height: 45px;
+    margin-top: 10px;
+    background: #f66060;
+    border-radius: 4px;
+    display: none;
+}
+
+.formulario_mensaje-activo {
+    display: block;
+}
