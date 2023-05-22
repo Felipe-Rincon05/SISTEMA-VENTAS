@@ -1,0 +1,74 @@
+CREATE DATABASE proyecto_ventas;
+USE proyecto_ventas;
+CREATE TABLE cliente(
+    id_c BIGINT NOT NULL,
+    nombre VARCHAR(244),
+    correo VARCHAR(244),
+    direccion VARCHAR(244),
+    estado_c BIT,
+    PRIMARY KEY (id_c)
+);
+
+CREATE TABLE empleado (
+    id_e BIGINT NOT NULL,
+    contrasena VARCHAR(244),
+    nombre VARCHAR(244),
+    correo VARCHAR(244) UNIQUE,
+    telefono VARCHAR(244),
+    estado_e BIT,
+    usuario VARCHAR(8),
+    PRIMARY KEY (id_e)  
+);
+
+CREATE TABLE producto (
+    id_producto BIGINT NOT NULL,
+    nombre VARCHAR(244),
+    precio DOUBLE,
+    stock BIGINT,
+    estado BIT,
+    PRIMARY KEY (id_producto)
+);
+
+CREATE TABLE ventas (
+    id_ventas BIGINT NOT NULL AUTO_INCREMENT,
+    numero_serie VARCHAR(244),
+    fecha_venta DATE,
+    monto DOUBLE,
+    estado BIT,
+    id_c BIGINT,
+    id_e BIGINT,
+    PRIMARY KEY (id_ventas),
+    FOREIGN KEY (id_c) REFERENCES cliente(id_c),
+    FOREIGN KEY (id_e) REFERENCES empleado(id_e)
+); 
+
+CREATE TABLE detalles_ventas (
+    id_detven BIGINT NOT NULL AUTO_INCREMENT,
+    cantidad BIGINT,
+    precio_venta DOUBLE,
+    id_ventas BIGINT,
+    id_producto BIGINT,
+    PRIMARY KEY (id_detven),
+    FOREIGN KEY (id_ventas) REFERENCES ventas(id_ventas),
+    FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+);
+
+INSERT INTO cliente VALUES
+(17, 'Juan Guerrero Solis', 'guerrero@gmail.com', 'Los Alamos', 1),
+(18, 'Maria Rosas Villanueva', 'rositas@outlook.com', 'Los Laureles 234', 1),
+(19, 'Andres de Santa Cruz', 'lascruces@hotmail.com', 'Av. La Frontera 347', 1),
+(20, 'Andres Mendoza', 'carnederes@gmail.com', 'Chosica, Lurigancho', 1);
+
+INSERT INTO empleado VALUES
+(1, "123", 'Pedro Hernandez', 'pedro09@outlook.com', '988252459', 1, 'emp01'),
+(2, "123", 'Roman Riquelme', 'kolaroman@gmail.com', '988252459', 1, 'Jo46'),
+(3, "123", 'Palermo Suarez', 'palermoItalia@hotmail.com', '453536458', 1, 'Em22');
+
+INSERT INTO producto VALUES
+(1, 'Teclado Logitech 345 Editado', 150, 99, 1),
+(2, 'Mouse Logitech 567', 20, 98, 1),
+(3, 'Laptop Lenovo Ideapad 520', 800, 100, 1),
+(4, 'HeadPhones Sony M333', 500, 98, 1),
+(7, 'Producto Nuevo w', 22, 35, 1);
+
+INSERT INTO ventas VALUES (1, '00000010', '2019-05-08', 345, 1, 17, 2);

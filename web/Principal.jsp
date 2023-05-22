@@ -36,7 +36,7 @@
                 </div>
                 <div class="btn-group text-center">
                     <button style="background-color: #1F618D; border-color: #1F618D " type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img style="border-radius: 100%" src="img/Wuanumen.png" width="30" height="30" alt="alt"/>
+                        <img style="border-radius: 100%" src="img/User.png" width="30" height="30" alt="alt"/>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end text-center">
                         <li><a class="dropdown-item" href="#">${usuario.getNombre()}</a></li>
