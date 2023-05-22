@@ -46,7 +46,6 @@ public class Validar extends HttpServlet {
             
             if(emdto.getUser() != null){
                 request.setAttribute("usuario", emdto);
-                System.out.println("Id empleado validar: "+id_empl);
                 request.getRequestDispatcher("Controlador?menu=Principal&id="+id_empl).forward(request, response);
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);

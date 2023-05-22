@@ -64,7 +64,6 @@ public class Controlador extends HttpServlet {
             
             if(menu.equals("Principal")){
                 id_empleado = Integer.parseInt(request.getParameter("id"));
-                System.out.println("id_llega: "+id_empleado);
                 request.getRequestDispatcher("Principal.jsp").forward(request, response);
             }
             if(menu.equals("Principal_Iframe")){
@@ -253,7 +252,6 @@ public class Controlador extends HttpServlet {
                                 prdao.updateStock(sac, id_pr);
                             }
                             //Guardar venta
-                            System.out.println("Id_empleado_guardarV: "+id_empleado);
                             vdto.setId_cliente(cldto.getId_c());
                             vdto.setId_empleado(id_empleado);
                             vdto.setNum_serie(numero_serie);
