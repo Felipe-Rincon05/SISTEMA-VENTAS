@@ -1,9 +1,10 @@
 .formulario_mensaje {
     height: 45px;
     margin-top: 10px;
-    background: #f66060;
+    color: #f66060;
+    background: none;
     border-radius: 4px;
-    display: none;
+    display: block;
 }
 
 .formulario_mensaje-activo {

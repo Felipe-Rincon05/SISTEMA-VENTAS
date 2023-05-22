@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -34,10 +35,18 @@
                             <label class="lbl_text"> Password: </label>
                             <input style=" background-color: #1F618D; border-color: transparent;" type="password" name="txt_password" class="form-control" autocomplete="off"> 
                         </div>
-                        <div class="formulario_mensaje" id="formulario_mensaje">
+                        <div class="formulario_mensaje" id="formulario_mensaje" style="background: transparent; color: #f66060;">
                             <p><i class="fa-solid fa-triangle-exclamation"></i> <b>Error:</b> Por favor rellena el formulario correctamente.</p>
                         </div>
-                        <br>
+                        <%
+                            if(request.getAttribute("error_login") != null){
+                                String flag = request.getAttribute("error_login").toString();
+
+                                if (flag.equals("false")){%>
+                                    <script>document.getElementById('formulario_mensaje').classList.add('formulario_mensaje-activo');</script>
+                                <%}
+                            }
+                        %>
                         <input style="margin-top: 10px; width: 100%; border-color: #134566; --bs-btn-hover-bg: #134566" type="submit" name="btn_enviar" value="Ingresar" class="btn btn-outline">
                     </form>
                 </div>
@@ -47,6 +56,5 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/4b5617367e.js" crossorigin="anonymous"></script>
-        
     </body>
 </html>

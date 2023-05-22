@@ -7,16 +7,10 @@ package CONTROL;
 import MODELO.dao.EmpleadoDAO;
 import MODELO.dto.EmpleadoDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 
 /**
  *
@@ -38,6 +32,7 @@ public class Validar extends HttpServlet {
             throws ServletException, IOException{
         String accion = request.getParameter("btn_enviar");
         String flag_login = "true";
+        request.setAttribute("error_login", flag_login);
         if (accion.equalsIgnoreCase("Ingresar")){
             String user = request.getParameter("txt_nombre");
             String contra = request.getParameter("txt_password");
@@ -48,9 +43,9 @@ public class Validar extends HttpServlet {
                 request.setAttribute("usuario", emdto);
                 request.getRequestDispatcher("Controlador?menu=Principal&id="+id_empl).forward(request, response);
             } else {
-                request.getRequestDispatcher("index.jsp").forward(request, response);
                 flag_login = "false";
                 request.setAttribute("error_login", flag_login);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {
             request.getRequestDispatcher("index.jsp").forward(request, response);
